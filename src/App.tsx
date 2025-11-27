@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import confetti from 'canvas-confetti';
 import { Countdown } from './components/Countdown';
 import {
   MapPinIcon,
@@ -80,6 +81,53 @@ export default function App() {
     }
   };
 
+  const handleImpact = () => {
+    const count = 200;
+    const defaults = {
+      origin: { y: 0.7 }
+    };
+
+    function fire(particleRatio: number, opts: confetti.Options) {
+      confetti({
+        ...defaults,
+        ...opts,
+        particleCount: Math.floor(count * particleRatio)
+      });
+    }
+
+    fire(0.25, {
+      spread: 26,
+      startVelocity: 55,
+      colors: ['#3b82f6', '#f97316'] // Blue & Orange
+    });
+
+    fire(0.2, {
+      spread: 60,
+      colors: ['#ffffff']
+    });
+
+    fire(0.35, {
+      spread: 100,
+      decay: 0.91,
+      scalar: 0.8,
+      colors: ['#3b82f6', '#f97316']
+    });
+
+    fire(0.1, {
+      spread: 120,
+      startVelocity: 25,
+      decay: 0.92,
+      scalar: 1.2,
+      colors: ['#ffffff']
+    });
+
+    fire(0.1, {
+      spread: 120,
+      startVelocity: 45,
+      colors: ['#3b82f6', '#f97316']
+    });
+  };
+
   return (
     <div className="min-h-screen bg-[#020617] text-white overflow-x-hidden selection:bg-blue-500 selection:text-white">
       <div className="fixed inset-0 z-0 opacity-30 pointer-events-none">
@@ -114,9 +162,18 @@ export default function App() {
             </div>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-2 text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-400 drop-shadow-lg leading-tight">
-            GRAN IMPACTO
-          </h1>
+          <button
+            onClick={handleImpact}
+            className="group relative transition-transform active:scale-95 focus:outline-none"
+          >
+            <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-2 text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-400 drop-shadow-lg leading-tight cursor-pointer select-none">
+              GRAN IMPACTO
+            </h1>
+            <span className="absolute -top-2 -right-2 flex h-3 w-3">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-orange-500"></span>
+            </span>
+          </button>
           <h2 className="text-lg font-bold text-orange-400 uppercase tracking-wider mb-2">
             Evangelístico
           </h2>
@@ -141,7 +198,7 @@ export default function App() {
               <a
                 href={EVENT_DETAILS.locationMapUrl}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="inline-flex items-center text-xs font-semibold text-blue-400 hover:text-blue-300 transition-colors"
               >
                 Ver en mapa <span className="ml-1">→</span>
