@@ -169,10 +169,6 @@ export default function App() {
             <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-2 text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-400 drop-shadow-lg leading-tight cursor-pointer select-none">
               GRAN IMPACTO
             </h1>
-            <span className="absolute -top-2 -right-2 flex h-3 w-3">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-orange-500"></span>
-            </span>
           </button>
           <h2 className="text-lg font-bold text-orange-400 uppercase tracking-wider mb-2">
             Evangelístico
