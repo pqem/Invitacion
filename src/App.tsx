@@ -154,7 +154,7 @@ export default function App() {
 
             <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-700/50 bg-slate-900">
               <img
-                src="preview.jpg"
+                src="tarjeta.png"
                 alt="Flyer Gran Impacto Evangelístico - Culto Unido Juvenil"
                 className="w-full h-auto object-contain transform group-hover:scale-105 transition-transform duration-500 ease-out"
               />
